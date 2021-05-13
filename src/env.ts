@@ -31,6 +31,7 @@ export const env = {
         banner: toBool(getOsEnv('APP_BANNER')),
         apiKey: getOsEnv('APP_API_KEY'),
         corsWhitelist: getOsEnvArray('APP_CORS_WHITELIST'),
+        jwtSecret: getOsEnv('JWT_SECRET'),
         dirs: {
             migrations: getOsPaths('TYPEORM_MIGRATIONS'),
             migrationsDir: getOsPath('TYPEORM_MIGRATIONS_DIR'),
@@ -76,22 +77,6 @@ export const env = {
         enabled: toBool(getOsEnv('GRAPHQL_ENABLED')),
         route: getOsEnv('GRAPHQL_ROUTE'),
         editor: toBool(getOsEnv('GRAPHQL_EDITOR')),
-    },
-    hasura: {
-        enabled: toBool(getOsEnv('GRAPHQL_ENABLED')),
-        remote: getOsEnv('HASURA_REMOTE'),
-        secret: getOsEnv('HASURA_SECRET'),
-        username: getOsEnv('HASURA_USERNAME'),
-        password: getOsEnv('HASURA_PASSWORD'),
-
-    },
-    elasticsearch: {
-        enabled: toBool(getOsEnv('ELASTICSEARCH_ENABLED')),
-        host: getOsEnv('ELASTICSEARCH_HOST'),
-        apiVersion: getOsEnv('ELASTICSEARCH_API_VERSION'),
-        index: {
-            mobile: getOsEnv('ELASTICSEARCH_INDEX_MOBILE_PREFIX'),
-        },
     },
     monitor: {
         enabled: toBool(getOsEnv('MONITOR_ENABLED')),

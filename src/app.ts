@@ -5,9 +5,6 @@ import { bootstrapMicroframework } from 'microframework-w3tec';
 import { banner } from './lib/banner';
 import { Logger } from './lib/logger';
 import { eventDispatchLoader } from './loaders/eventDispatchLoader';
-import { expressLoader } from './loaders/expressLoader';
-import { graphqlLoader } from './loaders/graphqlLoader';
-import { hasuraLoader } from './loaders/hasuraLoader';
 import { homeLoader } from './loaders/homeLoader';
 import { iocLoader } from './loaders/iocLoader';
 import { redisLoader } from './loaders/redisLoader';
@@ -35,12 +32,9 @@ bootstrapMicroframework({
         iocLoader,
         eventDispatchLoader,
         typeormLoader,
-        expressLoader,
         redisLoader,
         swaggerLoader,
         homeLoader,
-        graphqlLoader,
-        hasuraLoader,
     ],
 })
     .then((mf) => {

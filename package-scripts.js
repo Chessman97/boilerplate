@@ -15,10 +15,6 @@ module.exports = {
             script: 'cross-env NODE_ENV=production node dist/app.js',
             description: 'Starts the builded app',
         },
-        mesh: {
-            script: 'yarn graphql-mesh serve',
-            description: 'Starts the graphql-mesh',
-        },
         /**
          * Serves the current app and watches for changes to restart it
          */
@@ -66,10 +62,18 @@ module.exports = {
                 'nps clean.dist',
                 'nps transpile',
                 'nps copy',
+                'nps copy.fonts',
                 'nps copy.tmp',
                 'nps clean.tmp',
             ),
             description: 'Builds the app into the dist directory'
+        },
+        bs: {
+            script: series(
+                'nps build',
+                'nps start',
+            ),
+            description: 'Builds the app into the dist directory and starts the builded app'
         },
         /**
          * Runs eslint over your project
@@ -122,6 +126,13 @@ module.exports = {
                 ),
                 hiddenFromHelp: true
             },
+            fonts: {
+                script: copy(
+                    './src/public/**/*',
+                    './dist'
+                ),
+                hiddenFromHelp: true
+            },
             tmp: {
                 script: copyDir(
                     './.tmp/src',
@@ -166,9 +177,9 @@ module.exports = {
                 script: series(
                     'nps db.drop',
                     'nps db.migrate',
-                    'nps db.seed'
+                    // 'nps db.seed'
                 ),
-                description: 'Recreates the database with seeded data'
+                description: 'Recreates the database'
             }
         },
         /**
