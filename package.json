@@ -36,6 +36,7 @@
     "class-validator": "^0.12.2",
     "class-validator-jsonschema": "^2.0.2",
     "cls-hooked": "^4.2.2",
+    "cls-redis-patch": "^0.0.1",
     "commander": "^5.1.0",
     "copyfiles": "^2.3.0",
     "cors": "^2.8.5",
@@ -75,6 +76,7 @@
     "typescript": "^3.9.5",
     "uuid": "^8.1.0",
     "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.5.5",
     "yamljs": "^0.3.0"
   },
   "resolutions": {

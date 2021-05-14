@@ -1,3 +1,5 @@
+import { createNamespace } from 'cls-hooked';
+import patchRedis from 'cls-redis-patch';
 import { Application } from 'express';
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
 import { createExpressServer } from 'routing-controllers';
@@ -34,6 +36,8 @@ export const expressLoader: MicroframeworkLoader = (settings: MicroframeworkSett
             currentUserChecker: currentUserChecker(connection),
         });
 
+        const clsNamespace = createNamespace('app');
+        patchRedis(clsNamespace);
         // Run application to listen on given port
         if (!env.isTest) {
             const server = expressApp.listen(env.app.port);
@@ -42,5 +46,6 @@ export const expressLoader: MicroframeworkLoader = (settings: MicroframeworkSett
 
         // Here we can set the data for other loaders
         settings.setData('express_app', expressApp);
+        settings.setData('clsNamespace', clsNamespace);
     }
 };

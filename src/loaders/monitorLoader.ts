@@ -8,7 +8,7 @@ export const monitorLoader: MicroframeworkLoader = (settings: MicroframeworkSett
     if (settings && env.monitor.enabled) {
         const expressApp = settings.getData('express_app');
 
-        expressApp.use(monitor());
+        // expressApp.use(monitor());
         expressApp.get(
             env.monitor.route,
             env.monitor.username ? basicAuth({
